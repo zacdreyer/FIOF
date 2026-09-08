@@ -2,6 +2,11 @@
 
 FIOF 0.1.0 replaces the prototype contract. There is no in-place migration, automatic update or uninstall command. Distribution updates and knowledge-format migrations are separate operations.
 
+For an existing FIOF deployment, follow the detailed
+[README update procedure](../README.md#updating-a-deployment), including side-by-side
+candidate setup, compatibility checks, explicit adoption and rollback. The mapping
+below applies specifically to prototype records.
+
 1. Locate the actual prototype records; do not infer their location from a default path. Record owner, permissions and resource identity.
 2. Serialize writers; take a protected backup including metadata/permissions and verify an isolated restore.
 3. Create a separate protected FIOF directory; keep source records unchanged.

@@ -22,7 +22,9 @@ No claim of 100% security or certified autonomous operation is made.
 
 - [What FIOF does](#what-does-fiof-actually-do)
 - [What you need](#what-you-need)
+- [Deployment readiness](#deployment-readiness)
 - [Quick start](#quick-start)
+- [Updating a deployment](#updating-a-deployment)
 - [Getting The Agent to use FIOF](#how-to-get-the-agent-to-use-fiof)
 - [Where knowledge lives](#where-knowledge-lives)
 - [The operating lifecycle](#the-operating-lifecycle)
@@ -83,6 +85,34 @@ the specific resource and suitable operational tools.
 
 The Agent's own requirements remain separate. For example, an externally hosted
 agent may need a network connection even though FIOF's records are local files.
+
+## Deployment readiness
+
+**FIOF is usable now for supervised adoption. It is not certified as fully
+production-ready, and version 0.1.0 remains experimental.** Deploying FIOF means
+making reviewed framework documents and protected resource records available to
+an engineer or The Agent; it does not install an autonomous infrastructure service.
+
+| Intended use | Current position |
+| --- | --- |
+| Learn the framework or maintain records manually | Available now; use the contracts and templates |
+| Supervised discovery and documentation | Start with a bounded pilot and enforce read-only infrastructure access |
+| Use alongside existing production operating procedures | Adopt with owner review, approved data handling and protected records; preserve existing change controls |
+| Agent-executed infrastructure changes | Require environment-specific permission, backup, restore and validation evidence before each authorized scope |
+| Unattended production operation | Not demonstrated or certified by this project |
+
+Start on a non-production resource. Verify a fresh-session handover and an isolated
+knowledge restore, then test a small reversible change under explicit authority.
+Before expanding to production, demonstrate the [deployment controls](docs/secure-deployment.md)
+and [conformance scenarios](spec/conformance.md) for your tools and environment.
+An agent's ability to access a server is not evidence that it will operate it safely.
+
+The helper suite passed on Windows and on Linux containers using runtime versions
+22 and 24. This supports confidence in the tested scaffolding behaviour, not in
+every infrastructure operation. macOS execution, hosted CI, independent review and
+live operational pilots remain outstanding in the current
+[security review](docs/security-review.md). A future version number alone will
+not replace that evidence.
 
 ## Start here
 
@@ -219,6 +249,101 @@ With Node.js 22 or later, run `node tools/check.mjs` for structural checks or
 These commands are for the framework checkout. They do not inspect live
 infrastructure or prove that an agent followed FIOF. You do not need to run them
 to read the framework or maintain records manually.
+
+## Updating a deployment
+
+Update the **framework distribution** separately from the **resource knowledge
+base**. There is no automatic updater, in-place knowledge migration or service
+restart. The initializer is for new directories only; do not rerun it as an update.
+
+### 1. Record and protect the current deployment
+
+Finish or checkpoint active sessions and serialize knowledge writers. Record the
+current framework location, version and exact commit (or archive checksum), plus
+knowledge format and selected module versions. For a Git checkout:
+
+```sh
+git status --short
+git rev-parse HEAD
+```
+
+Run these from the current framework directory. Review and preserve any local
+changes rather than resetting or discarding them. Back up the knowledge base,
+including permissions, attachments and history, and verify a restore to an
+isolated location. Keep the existing framework checkout available for rollback.
+
+### 2. Obtain a reviewed candidate beside the existing checkout
+
+From the **parent directory** of your current framework checkout, create a new
+sibling directory. `FIOF-next` below must not already exist. Replace the tag/commit
+placeholder with the actual reviewed reference before running the commands:
+
+```text
+git clone --no-checkout https://github.com/zacdreyer/FIOF.git FIOF-next
+git -C FIOF-next checkout --detach <reviewed-tag-or-full-commit>
+git -C FIOF-next rev-parse HEAD
+```
+
+Compare the resulting full commit ID with the intended reference obtained through
+a trusted source. Use a reviewed commit if no suitable release tag exists; do not
+assume a tag exists or silently adopt whatever the default branch currently holds.
+For an archive deployment, extract the reviewed archive into a new sibling directory
+and record its source/checksum. Neither route requires Node.js.
+
+### 3. Review compatibility and validate the candidate
+
+Read the candidate's `CHANGELOG.md`, `VERSION`, release/migration notes, core
+contract and selected module manifests. Check framework, knowledge-format and
+module compatibility separately. A version string alone is insufficient when
+unreleased changes share the same version; retain the exact commit/checksum in
+the resource's `INDEX.md` and update change record, outside the strict manifest schema.
+
+Review helper code before running it. If using the optional Node.js tooling,
+run the following from the candidate directory in an isolated test environment:
+
+```text
+npm test
+```
+
+Use `npm.cmd test` in Windows PowerShell if its script policy blocks the npm shim.
+Test a fresh-reader handover against a protected copy of the existing knowledge.
+Repository tests alone do not establish migration compatibility or production safety.
+
+If the candidate requires a knowledge-format migration, stop the ordinary update
+path and follow its documented mapping, backup, validation and rollback procedure.
+Do not change `formatVersion` to bypass incompatibility, and do not replace populated
+records with new templates. If no supported migration exists, retain the current
+deployment until a reviewed migration is available.
+
+### 4. Adopt the candidate explicitly
+
+After acceptance, change the framework location in the operator inventory and
+The Agent's persistent/session instructions to the new checkout. Keep the same
+knowledge location for a compatible update; use the accepted new location only
+when a separate knowledge migration has been performed. Protect the operational
+framework copy from session writes.
+
+Record the update decision, evidence, old/new locations, exact distribution
+identities and rollback plan. Update `frameworkVersion` and selected module pins
+in `manifest.json` only to the versions actually adopted and supported; preserve
+`resourceId` and leave `formatVersion` unchanged unless a migration was completed.
+Update the index, context and handover, then have the next session verify the
+resource, authority, selected contract and unfinished work before continuing.
+Roll out to additional resources only after the pilot meets its acceptance criteria.
+
+### 5. Roll back if acceptance fails
+
+For a compatible format, point instructions back to the retained previous framework
+and reconcile version pins and the update record. Preserve evidence and any new
+operational records written since adoption. If knowledge was migrated, use the
+tested migration rollback and reconcile intervening changes before restoring the
+old discovery pointer. Never restore an old knowledge snapshot over newer live
+records without that reconciliation.
+
+A framework rollback does not undo infrastructure changes made during a session.
+Those changes retain their own recovery plans and authority requirements. Keep
+the previous checkout and backups until acceptance and retention requirements are
+met. See [migration guidance](docs/migration.md) and [release policy](docs/releases.md).
 
 ## How to get The Agent to use FIOF
 
@@ -468,6 +593,10 @@ Review a new framework release and compatibility notes separately from the resou
 records. Do not copy fresh templates over populated files or merely replace version
 markers. Knowledge-format migrations need backup, mapping, validation and rollback.
 Follow [migration guidance](docs/migration.md).
+
+The [deployment update procedure](#updating-a-deployment) gives the full sequence:
+checkpoint and back up, stage a reviewed candidate, verify compatibility, switch
+the agent's framework reference, and retain a reconciled rollback path.
 
 ### Is it production-ready, and what do the tests prove?
 
