@@ -1,0 +1,148 @@
+v22.23.2
+
+> fiof-framework@0.1.0 test
+> node tools/check.mjs && node --test tests/*.test.mjs
+
+Checked 113 files, 21 modules and 184 local links.
+TAP version 13
+# Subtest: creates valid unverified scaffold and preserves it on repeated initialization
+ok 1 - creates valid unverified scaffold and preserves it on repeated initialization
+  ---
+  duration_ms: 37.964086
+  type: 'test'
+  ...
+# Subtest: rejects invalid IDs, relative paths, missing parents and checkout destinations
+ok 2 - rejects invalid IDs, relative paths, missing parents and checkout destinations
+  ---
+  duration_ms: 1.229017
+  type: 'test'
+  ...
+# Subtest: rejects existing files and link ancestors without modifying referenced content
+ok 3 - rejects existing files and link ancestors without modifying referenced content
+  ---
+  duration_ms: 1.415861
+  type: 'test'
+  ...
+# Subtest: refuses dangling destination links
+ok 4 - refuses dangling destination links
+  ---
+  duration_ms: 0.548042
+  type: 'test'
+  ...
+# Subtest: schema rejects unsupported formats, extra fields and invalid module pins
+ok 5 - schema rejects unsupported formats, extra fields and invalid module pins
+  ---
+  duration_ms: 1.281648
+  type: 'test'
+  ...
+# Subtest: partial write failure leaves inspectable records without a completion manifest
+ok 6 - partial write failure leaves inspectable records without a completion manifest
+  ---
+  duration_ms: 33.60502
+  type: 'test'
+  ...
+# Subtest: rejects trailing line breaks in resource IDs before creating files
+ok 7 - rejects trailing line breaks in resource IDs before creating files
+  ---
+  duration_ms: 0.403249
+  type: 'test'
+  ...
+# Subtest: failed final manifest write never publishes a corrupt completion manifest
+ok 8 - failed final manifest write never publishes a corrupt completion manifest
+  ---
+  duration_ms: 32.884445
+  type: 'test'
+  ...
+# Subtest: schema inspects unsupported keywords even in absent optional fields
+ok 9 - schema inspects unsupported keywords even in absent optional fields
+  ---
+  duration_ms: 0.317297
+  type: 'test'
+  ...
+# Subtest: schema uniqueness compares object contents regardless of property order
+ok 10 - schema uniqueness compares object contents regardless of property order
+  ---
+  duration_ms: 0.348618
+  type: 'test'
+  ...
+# Subtest: metadata rejects trailing line breaks in identifiers and versions
+ok 11 - metadata rejects trailing line breaks in identifiers and versions
+  ---
+  duration_ms: 1.272008
+  type: 'test'
+  ...
+# Subtest: refuses linked framework inputs before destination creation
+ok 12 - refuses linked framework inputs before destination creation
+  ---
+  duration_ms: 0.739777
+  type: 'test'
+  ...
+# Subtest: source read failure creates no destination
+ok 13 - source read failure creates no destination
+  ---
+  duration_ms: 12.828773
+  type: 'test'
+  ...
+# Subtest: CLI has truthful exit codes and rejects unknown options without mutation
+ok 14 - CLI has truthful exit codes and rejects unknown options without mutation
+  ---
+  duration_ms: 184.615637
+  type: 'test'
+  ...
+# Subtest: a destination created by another writer is never merged
+ok 15 - a destination created by another writer is never merged
+  ---
+  duration_ms: 26.897153
+  type: 'test'
+  ...
+# Subtest: detects parent replacement during source preflight without writing through a junction
+ok 16 - detects parent replacement during source preflight without writing through a junction
+  ---
+  duration_ms: 32.21136
+  type: 'test'
+  ...
+# Subtest: exclusive manifest publication cannot overwrite a competing manifest
+ok 17 - exclusive manifest publication cannot overwrite a competing manifest
+  ---
+  duration_ms: 33.274043
+  type: 'test'
+  ...
+# Subtest: publication failure preserves pending records for inspection
+ok 18 - publication failure preserves pending records for inspection
+  ---
+  duration_ms: 32.566488
+  type: 'test'
+  ...
+# Subtest: rejects group or world writable POSIX parent
+ok 19 - rejects group or world writable POSIX parent
+  ---
+  duration_ms: 0.348018
+  type: 'test'
+  ...
+# Subtest: local links cannot escape the checkout or access network/drive paths
+ok 20 - local links cannot escape the checkout or access network/drive paths
+  ---
+  duration_ms: 0.488171
+  type: 'test'
+  ...
+# Subtest: common credential signatures are rejected without printing their values
+ok 21 - common credential signatures are rejected without printing their values
+  ---
+  duration_ms: 0.650035
+  type: 'test'
+  ...
+# Subtest: CI retains immutable actions, restricted token access and bounded hosted execution
+ok 22 - CI retains immutable actions, restricted token access and bounded hosted execution
+  ---
+  duration_ms: 3.282813
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 572.897901

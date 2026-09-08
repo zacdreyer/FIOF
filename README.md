@@ -14,6 +14,10 @@ Infrastructure should remember. Operational knowledge belongs with the resources
 read the documents and maintain the knowledge files directly. Node.js is only
 needed if you choose to run the optional initializer or repository checks.
 
+For security findings, tested protections and open release gates, read the
+[security review](docs/security-review.md) and [deployment controls](docs/secure-deployment.md).
+No claim of 100% security or certified autonomous operation is made.
+
 ## Contents
 
 - [What FIOF does](#what-does-fiof-actually-do)
@@ -222,6 +226,11 @@ Give The Agent read access to this checkout and the resource's knowledge base,
 plus permission to write operational records there. Provide only the infrastructure
 tools and access needed for the task. Cloning the repository does not automatically
 make an agent follow it.
+
+Before connecting an external agent or tool, confirm that it is an approved
+destination for the data involved. Minimize and redact output before it enters
+agent context or logs. Keep the operational framework copy read-only to the session
+and enforce infrastructure permissions outside the written instructions.
 
 There is no special agent registration, plugin installation or activation command.
 The important step is to explicitly supply the framework location, resource
@@ -466,8 +475,10 @@ Version 0.1.0 is experimental. Structural tests check repository files and helpe
 behaviour; they do not prove an agent operates safely or certify infrastructure.
 The [conformance scenarios](spec/conformance.md) define operational pilot evidence,
 and the [release gates](docs/releases.md) describe the path to stable support.
-The helper has been tested locally on Windows; hosted CI and macOS execution
-have not been verified in this project handover.
+The helper has been tested locally on Windows and in isolated Linux containers
+on runtime versions 22 and 24. All 22 tests passed in each Linux run, including
+the POSIX checks; see [verification evidence](docs/testing/linux-verification.md).
+Hosted CI and macOS execution have not been verified in this project handover.
 
 ## Troubleshooting
 
@@ -477,6 +488,8 @@ have not been verified in this project handover.
 | The initializer says the target exists | Read the existing records; it deliberately refuses to merge or overwrite |
 | Initialization stopped partway | Preserve and inspect the partial directory; reconcile before choosing a new destination |
 | The initializer rejects a parent | Use an existing protected real directory outside the checkout; it refuses link/junction ancestors |
+| The helper leaves `.manifest.json.pending` | Initialization did not finish cleanly; preserve and inspect all records before adoption |
+| The filesystem does not support hard links | Use reviewed manual setup; the helper will not fall back to overwriting files |
 | The Agent cannot open the paths | Provide locations reachable through its tools or arrange authorized access; a local path is not automatically shared |
 | The Agent answers in chat but saves nothing | Verify write access and request actual record updates; otherwise save reviewed proposed edits manually |
 | PowerShell blocks the npm script shim | Use `npm.cmd test` for optional tooling tests |

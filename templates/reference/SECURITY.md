@@ -14,6 +14,12 @@
 
 ## Audit and logging
 
+## Data handling and agent/tool access
+
+Record permitted data destinations, minimization/redaction controls, credential
+scope and expiry, trusted approval channel, writer serialization and emergency
+revocation procedure. Store references, never secret values.
+
 ## Findings and accepted risks
 
 ## Record metadata

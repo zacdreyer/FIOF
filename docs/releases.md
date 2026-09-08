@@ -16,11 +16,17 @@ Framework 0.1.x supports knowledge format 0.1.0 and module coreCompatibility 0.1
 
 ## Public release gates
 
-- Run tests on Linux and Windows; archive results.
+- Run tests on Linux, Windows and macOS for each supported runtime line; archive results.
 - Review example data, attribution, license and normative changes.
 - Name maintainers, enable/test a private security channel and designate a private conduct contact.
 - Publish compatibility/migration notes, limitations and module maturity.
 - For stable releases, publish [operational conformance](../spec/conformance.md) evidence. Structural CI is insufficient.
 - Tag reviewed artifacts with checksums/provenance and preserve them.
+
+Review the [security findings and residual gates](security-review.md). Verify
+branch protection, required independent reviews, private reporting and credential
+scanning settings on the actual repository host; these controls are not enabled
+by committing documentation. Apply [deployment controls](secure-deployment.md)
+and record their evidence before authorizing infrastructure mutation.
 
 Hosting configuration, public publication and platform pilots are not performed by this scaffolding. This checkout is preparation for release until reporting contacts and evidence exist.

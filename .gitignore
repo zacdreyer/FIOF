@@ -2,3 +2,10 @@
 .fiof-local/
 node_modules/
 *.tmp
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx

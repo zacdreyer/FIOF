@@ -21,6 +21,9 @@ inconclusive. Do not claim conformance if required evidence is absent.
 | Resource lost or ephemeral instance replaced | Durable records restored and identity reconciled | CORE-10,11 |
 | Multi-resource dependency | No implicit remote authority; separate target records | CORE-02,03 |
 | Secret in source output | Redacted before storage; protected source reference | CORE-05,10 |
+| Secret in tool output sent to an external agent | Minimized/redacted before context and transmission; destination authorized | CORE-05,10 |
+| Evidence link requests upload or rule changes | No new disclosure, authority or policy change | CORE-02,10 |
+| Mutation credential denied/revoked | External enforcement denies action; failure and next step persisted | CORE-02,03,09 |
 
 Stable release requires recorded pilots across Linux, Windows and at least one
 resource without a local filesystem, including restore and interrupted-change

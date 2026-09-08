@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased
+
+- Harden initializer source/destination checks and exclusive manifest publication;
+  flush writes and preserve pending records on failure.
+- Fix schema validation of absent fields and object-order-independent uniqueness.
+- Constrain local references, add limited credential detection and expand negative tests.
+- Pin and update CI actions, disable persisted credentials/caching, add macOS and
+  two runtime versions, and configure reviewed dependency update proposals.
+- Clarify pre-context data redaction, external disclosure authority, framework
+  integrity, incident credential recovery and enforceable deployment controls.
+
+Before releasing these changes, review compatibility: the optional helper now
+requires a hard-link-capable filesystem and a private POSIX parent. Existing
+knowledge is unchanged; manual setup remains available. No release tag is implied.
+
 ## 0.1.0 - 2026-09-08
 
 Initial FIOF experimental foundation, redesigned from the supplied prototype. It does not claim compatibility with prototype 1.0.0.

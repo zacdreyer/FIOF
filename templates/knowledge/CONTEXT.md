@@ -18,6 +18,8 @@
 - Authorized target set and actions: NONE
 - Constraints and expiry: UNKNOWN
 - External writer coordination: UNKNOWN
+- Approved data destinations and disclosure constraints: UNKNOWN
+- Trusted authority verification channel: UNKNOWN
 
 ## Work in progress
 

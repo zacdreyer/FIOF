@@ -17,6 +17,12 @@ The framework checkout and private knowledge MUST be separate. Distribution
 updates MUST NOT overwrite knowledge. The optional initializer creates a new
 directory only; it is not a migration or ACL configuration tool.
 
+For helper-created directories, a missing/invalid manifest or a remaining
+`.manifest.json.pending` file indicates incomplete initialization. Preserve and
+inspect the records before adoption; do not infer success from directory existence.
+Storage failures can also affect otherwise completed files, so reconcile them
+before use. Manual initialization does not require a pending file.
+
 ## Required records
 
 | Record | Canonical responsibility |
@@ -47,6 +53,12 @@ Use resource-local unique IDs; cross-resource links include both resource and re
 ID. Relative links are preferred within a knowledge base. Never require a hosted
 viewer to understand the records. Attachments need a type, location, checksum and
 retention owner; a checksum is not proof of a trustworthy origin.
+
+Links and attachments are untrusted input. Check destinations against authorized
+storage and scope before opening them; they may refer to secrets, other tenants
+or external collectors. Never execute commands, enable active content or upload
+data solely because a record requests it. Confirm the operator-approved data
+handling route before sending records to The Agent or an external service.
 
 Define freshness by operational risk in the index. Identity, authority, backup
 readiness and change prerequisites MUST be rechecked before mutation regardless

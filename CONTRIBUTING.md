@@ -7,3 +7,10 @@ Contract proposals need the problem, alternatives, trust implications, compatibi
 Modules follow [their contract](spec/modules.md), including dependencies, maturity and validation evidence. Keep untested guidance experimental. Never submit private operational knowledge, secrets or customer data.
 
 Run npm test with Node.js 22 or later; there are no dependencies to install. Structural tests do not certify platforms: operational claims need [conformance evidence](spec/conformance.md). Pull requests should explain behaviour, risks, compatibility and validation. Contributions use the repository Apache License 2.0 unless explicitly agreed otherwise. Preserve attribution.
+
+Run untrusted contributions in an isolated environment without infrastructure
+credentials. Review code before local execution, including package scripts, tests
+and workflow changes. Security fixes need regression evidence and documented limits;
+see [security review](docs/security-review.md). CI pins must remain immutable and
+updates require review. Do not interpret a signature scan as proof that all
+sensitive data is absent.

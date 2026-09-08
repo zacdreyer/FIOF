@@ -1,0 +1,36 @@
+v24.20.0
+
+> fiof-framework@0.1.0 test
+> node tools/check.mjs && node --test tests/*.test.mjs
+
+Checked 113 files, 21 modules and 184 local links.
+✔ creates valid unverified scaffold and preserves it on repeated initialization (38.053403ms)
+✔ rejects invalid IDs, relative paths, missing parents and checkout destinations (0.610063ms)
+✔ rejects existing files and link ancestors without modifying referenced content (1.046482ms)
+✔ refuses dangling destination links (0.531381ms)
+✔ schema rejects unsupported formats, extra fields and invalid module pins (1.538614ms)
+✔ partial write failure leaves inspectable records without a completion manifest (33.364592ms)
+✔ rejects trailing line breaks in resource IDs before creating files (0.486971ms)
+✔ failed final manifest write never publishes a corrupt completion manifest (32.900324ms)
+✔ schema inspects unsupported keywords even in absent optional fields (0.339048ms)
+✔ schema uniqueness compares object contents regardless of property order (0.377188ms)
+✔ metadata rejects trailing line breaks in identifiers and versions (1.218255ms)
+✔ refuses linked framework inputs before destination creation (0.774676ms)
+✔ source read failure creates no destination (15.101248ms)
+✔ CLI has truthful exit codes and rejects unknown options without mutation (188.555467ms)
+✔ a destination created by another writer is never merged (32.174079ms)
+✔ detects parent replacement during source preflight without writing through a junction (32.358973ms)
+✔ exclusive manifest publication cannot overwrite a competing manifest (33.66675ms)
+✔ publication failure preserves pending records for inspection (34.404476ms)
+✔ rejects group or world writable POSIX parent (0.515461ms)
+✔ local links cannot escape the checkout or access network/drive paths (0.497621ms)
+✔ common credential signatures are rejected without printing their values (0.709105ms)
+✔ CI retains immutable actions, restricted token access and bounded hosted execution (3.173567ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 594.978856
