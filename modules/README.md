@@ -1,0 +1,25 @@
+# Modules
+
+Select verified capabilities under the [module contract](../spec/modules.md). All bundled modules are experimental guidance. No platform/version is certified. Product dependencies must be selected and pinned too.
+
+- [cloud](domains/cloud/README.md)
+- [containers](domains/containers/README.md)
+- [databases](domains/databases/README.md)
+- [hosting](domains/hosting/README.md)
+- [linux](domains/linux/README.md)
+- [networking](domains/networking/README.md)
+- [virtualisation](domains/virtualisation/README.md)
+- [windows](domains/windows/README.md)
+- [cpanel](products/cpanel/README.md)
+- [cyberpanel](products/cyberpanel/README.md)
+- [directadmin](products/directadmin/README.md)
+- [docker](products/docker/README.md)
+- [exim](products/exim/README.md)
+- [ispconfig](products/ispconfig/README.md)
+- [mariadb](products/mariadb/README.md)
+- [nginx-apache](products/nginx-apache/README.md)
+- [plesk](products/plesk/README.md)
+- [postfix-dovecot](products/postfix-dovecot/README.md)
+- [postgresql](products/postgresql/README.md)
+- [proxmox](products/proxmox/README.md)
+- [webmin-virtualmin](products/webmin-virtualmin/README.md)

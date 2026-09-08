@@ -1,0 +1,12 @@
+{
+  "name": "fiof-framework",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "check": "node tools/check.mjs",
+    "test": "node tools/check.mjs && node --test tests/*.test.mjs"
+  },
+  "license": "Apache-2.0"
+}

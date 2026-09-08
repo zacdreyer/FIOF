@@ -1,0 +1,8 @@
+{
+  "id": "domain.hosting",
+  "version": "0.1.0",
+  "kind": "domain",
+  "coreCompatibility": "0.1.x",
+  "status": "experimental",
+  "requires": []
+}

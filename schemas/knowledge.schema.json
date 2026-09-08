@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FIOF knowledge manifest 0.1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["formatVersion", "frameworkVersion", "resourceId", "modules"],
+  "properties": {
+    "formatVersion": { "const": "0.1.0" },
+    "frameworkVersion": { "type": "string", "pattern": "^0\\.1\\.(0|[1-9][0-9]*)$" },
+    "resourceId": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$" },
+    "modules": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "version"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^(domain|product)\\.[a-z0-9]+(-[a-z0-9]+)*$" },
+          "version": { "type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "product.proxmox",
+  "version": "0.1.0",
+  "kind": "product",
+  "coreCompatibility": "0.1.x",
+  "status": "experimental",
+  "requires": [
+    "domain.virtualisation"
+  ]
+}

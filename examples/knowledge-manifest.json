@@ -1,0 +1,10 @@
+{
+  "formatVersion": "0.1.0",
+  "frameworkVersion": "0.1.0",
+  "resourceId": "example-production-db-01",
+  "modules": [
+    { "id": "domain.linux", "version": "0.1.0" },
+    { "id": "domain.databases", "version": "0.1.0" },
+    { "id": "product.postgresql", "version": "0.1.0" }
+  ]
+}
